@@ -1,0 +1,53 @@
+/* Scoped to the editor */
+.tiptap p {
+    font-size: 16px; /* Base font size for paragraphs */
+    margin: 10px 0px;
+}
+.tiptap h1 {
+    font-size: 32px; /* Larger heading for H1 */
+    margin: 10px 0px;
+}
+.tiptap h2 {
+    font-size: 28px; /* Slightly smaller than H1 */
+    margin: 10px 0px;
+}
+.tiptap h3 {
+    font-size: 24px; /* H3 follows H2 */
+    margin: 10px 0px;
+}
+.tiptap h4 {
+    font-size: 20px; /* H4 is smaller than H3 */
+    margin: 10px 0px;
+}
+.tiptap h5 {
+    font-size: 18px; /* H5 is smaller than H4 */
+    margin: 10px 0px;
+}
+.tiptap h6 {
+    font-size: 16px; /* H6 same size as paragraph */
+    margin: 10px 0px;
+}
+
+  
+
+/* Styles for the buttons in your Tiptap editor menu */
+.menu-button {
+    @apply border border-blue-500 text-blue-600 px-4 py-2 rounded transition-all duration-150 ease-in-out;
+  }
+  
+  .menu-button:hover {
+    @apply bg-blue-500 text-white;
+  }
+  
+  .menu-button-active {
+    @apply bg-blue-600 text-white;
+  }
+  
+  .menu-button:active {
+    @apply bg-blue-700 text-white;
+  }
+  
+  .menu-button:disabled {
+    @apply bg-gray-300 text-gray-600 border-gray-400 cursor-not-allowed;
+  }
+  
