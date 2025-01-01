@@ -19,3 +19,14 @@ body {
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+.br{
+  border: 2px solid red;
+}
+
+.bg{
+  border: 2px solid green;
+}
+.bb{
+  border: 2px solid black;
+}

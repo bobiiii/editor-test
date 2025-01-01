@@ -1,5 +1,7 @@
 // app/api/upload/route.js
 import { S3Client, PutObjectCommand } from '@aws-sdk/client-s3';
+import { Upload } from '@aws-sdk/lib-storage';
+
 import { nanoid } from 'nanoid';
 import { NextResponse } from 'next/server';
 
@@ -31,13 +33,21 @@ export async function POST(request) {
 
   // Upload to S3
   try {
-    const uploadParams = {
-      Bucket: process.env.AWS_BUCKET_NAME,
-      Key: s3Key,
-      Body: file.buffer,
-      ContentType: file.type,
-    };
-    await s3Client.send(new PutObjectCommand(uploadParams));
+    // Convert the file into a readable stream
+    const fileStream = file.stream();
+
+    // Use the Upload utility from @aws-sdk/lib-storage
+    const upload = new Upload({
+      client: s3Client,
+      params: {
+        Bucket: process.env.AWS_BUCKET_NAME,
+        Key: s3Key,
+        Body: fileStream,
+        ContentType: file.type,
+      },
+    });
+
+    await upload.done();
 
     // Return the image ID
     return NextResponse.json({ imageURL: s3Key }, { status: 201 });
